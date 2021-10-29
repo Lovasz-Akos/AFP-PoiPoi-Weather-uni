@@ -7,7 +7,7 @@ A megrendelő egy olyan időjárási előrejelzéseket generáló alkalmazást s
 # 3. Vágyálom rendszer
 A projekt célja, egy olyan időjárási előrejelzéseket generáló program létrehozása, ami képes megbízható adatokat készíteni, a rendelkezésre álló adathalmaz feldolgozásával. Tehát a programnak képesnek kell lennie arra, hogy egy adatbázisba elmentett különböző időjárási és éghajlati adatok felhasznásával, elemzésével előrejelzési erdeményeket tudjon lérehozni, lehetőleg minnél pontosabban a felhasználó számára. Majd az eredményeket, és az valós adatokat összevetve, az alkalmazás képes legyen tanulni, ezáltal folyamatosan egyre pontosabb becsléseket megalkotni a felhasználónak. Továbba a program egy egszerűbb felhasználói felülettel is rendelkezni fog, ahol az előrejelzéseket lehet megtekinteni.
 
-# 4. Funkcionális követelmények
+# 4. Követelménylista
 | Id | Modul | Név | Leírás |
 | :---: | --- | --- | --- |
 | K1 | Felület | Tallózás | Az időjárási adatokat tartalmazó fájlok kiválasztása megnyitásra és beolvasásra |
