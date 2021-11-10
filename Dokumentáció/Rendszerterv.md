@@ -54,3 +54,4 @@ megfelelően működnek a különböző funkciók. A teszt időtartama egy hét.
 
 - Corrective Maintenance: A felhasználók által felfedezett és "user reportben" elküldött hibák javítása.
 - Adaptive Maintenance: A program naprakészen tartása és finomhangolása.
+- Perfective Maintenance: A szoftver hosszútávú használata érdekében végzett módosítások, új funkciók, a szoftver teljesítményének és működési megbízhatóságának javítása.
