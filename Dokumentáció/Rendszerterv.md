@@ -21,9 +21,9 @@ A tesztelések célja, hogy a tesztelések során esetleges hibák feltűnése e
 
 Tesztelési eljárások:
 
-Unit teszt:
+- Unit teszt:
 
-Ahol csak lehetséges, szükséges már a fejlesztési idő alatt is tesztelni, hogy a
+	- Ahol csak lehetséges, szükséges már a fejlesztési idő alatt is tesztelni, hogy a
 metódusok megfelelően működnek-e.
 Ezért a metódusok megfelelő működésének biztosítására mindegyikhez írni
 kell Unit teszteket, a minél nagyobb kódlefedettséget szem előtt tartva. A
