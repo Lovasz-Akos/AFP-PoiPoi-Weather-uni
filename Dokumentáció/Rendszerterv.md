@@ -14,3 +14,18 @@ Alapvetően csak a program felületéhez és a használatához férnek hozzá.
 
 A program legfőbb feladata, hogy statisztikai adatok alapján egy időjárás előrejelzést tudjon jósolni.
 Mindemellett szeretnénk hogy a gépi tanulás legyen a program alapja és működési elve.
+
+# Teszt terv
+
+A tesztelések célja, hogy a tesztelések során esetleges hibák feltűnése esetén, azokat ki tudjuk javítani.
+
+Tesztelési eljárások:
+
+Unit teszt:
+
+Ahol csak lehetséges, szükséges már a fejlesztési idő alatt is tesztelni, hogy a
+metódusok megfelelően működnek-e.
+Ezért a metódusok megfelelő működésének biztosítására mindegyikhez írni
+kell Unit teszteket, a minél nagyobb kódlefedettséget szem előtt tartva. A
+metódusok akkor vannak kész, ha a tesztesetek hiba nélkül lefutnak az egyes
+metódusokon.
