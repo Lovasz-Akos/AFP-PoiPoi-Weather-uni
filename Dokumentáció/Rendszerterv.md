@@ -6,6 +6,13 @@ ahhoz, hogy intuitív legyen a használata.
 Természetesen nem csak számítógépen lesz elérhető, hanem minél több platformon, tehát tableten és telefonon is.
 Használatához semmilyen regisztráció nem szükséges, bárki hozzáférhet.
 
+# Projektterv
+
+Alapvetően a dokumentum megírását nagyjából egyenlően próbáltuk elosztani.
+A program kódot szintén nagyjából felosztottuk egymás között, némelyik témakörben közösen dolgozunk majd.
+A csapat tagjai:
+Farkas Erik, Karsai Petra, Maka Bettina, Zöldi-Tóth István
+
 # Üzleti folyamatok modellje
 
 Felhasználók:
