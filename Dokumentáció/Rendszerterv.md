@@ -47,7 +47,9 @@ megfelelően működnek a különböző funkciók. A teszt időtartama egy hét.
 # Telepítési terv
 
 - Androidos alkalmazás esetén: Töltse le az alkalmazást a Google Play áruházból, adja meg a szükséges engedélyeket és telepítse a programot!
-
+- Webes alkalmazás esetén: A szoftver webes felületéhez csak egy ajánlott böngésző telepítése szükséges
+	(Például: Google Chrome, Firefox, Opera, Safari), külön szoftver nem kell hozzá.
+	
 # Karbantartási terv
 
 - Corrective Maintenance: A felhasználók által felfedezett és "user reportben" elküldött hibák javítása.
