@@ -12,6 +12,10 @@ Felhasználók:
 
 - Alapvetően csak a program felületéhez és a használatához férnek hozzá.
 
+Fejlesztők:
+
+- Szintén hozzá tudnak férni a program felületéhez és használatához, viszont a karbantartást és a fejlesztést is ők végzik.
+
 # Követelmények
 
 A program legfőbb feladata, hogy statisztikai adatok alapján egy időjárás előrejelzést tudjon jósolni.
