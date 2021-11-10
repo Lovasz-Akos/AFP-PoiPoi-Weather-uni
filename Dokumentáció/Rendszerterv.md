@@ -38,3 +38,4 @@ metódusokon.
 
 - Corrective Maintenance: A felhasználók által felfedezett és "user reportben" elküldött hibák javítása.
 - Adaptive Maintenance: A program naprakészen tartása és finomhangolása.
+
