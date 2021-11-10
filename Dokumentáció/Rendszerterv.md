@@ -28,6 +28,17 @@ Fejlesztők:
 A program legfőbb feladata, hogy statisztikai adatok alapján egy időjárás előrejelzést tudjon jósolni.
 Mindemellett szeretnénk hogy a gépi tanulás legyen a program alapja és működési elve.
 
+# Funkcionális terv
+
+Rendszerszereplők:
+- Admin
+- Felhasználó
+
+Rendszerhasználati esetek és lefutásaik:
+
+- Felhasználó:
+	- Csak részleges hozzáférése van a rendszerhez
+
 # Teszt terv
 
 A tesztelések célja, hogy a tesztelések során esetleges hibák feltűnése esetén, azokat ki tudjuk javítani.
