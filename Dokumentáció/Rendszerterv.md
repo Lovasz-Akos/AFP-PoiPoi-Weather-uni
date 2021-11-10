@@ -39,6 +39,10 @@ Rendszerhasználati esetek és lefutásaik:
 - Felhasználó:
 	- Csak részleges hozzáférése van a rendszerhez
 
+# Fizikai környezet
+
+- Az alkalmazás Android és web platformra, hordozható eszközökre (például: okostelefonok, táblagépek) készül.
+
 # Teszt terv
 
 A tesztelések célja, hogy a tesztelések során esetleges hibák feltűnése esetén, azokat ki tudjuk javítani.
