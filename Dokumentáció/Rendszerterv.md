@@ -9,3 +9,8 @@ ahhoz, hogy intuitív legyen a használata.
 Felhasználók:
 
 Alapvetően csak a program felületéhez és a használatához férnek hozzá.
+
+# Követelmények
+
+A program legfőbb feladata, hogy statisztikai adatok alapján egy időjárás előrejelzést tudjon jósolni.
+Mindemellett szeretnénk hogy a gépi tanulás legyen a program alapja és működési elve.
