@@ -29,3 +29,7 @@ Ezért a metódusok megfelelő működésének biztosítására mindegyikhez ír
 kell Unit teszteket, a minél nagyobb kódlefedettséget szem előtt tartva. A
 metódusok akkor vannak kész, ha a tesztesetek hiba nélkül lefutnak az egyes
 metódusokon.
+
+# Telepítési terv
+
+- Androidos alkalmazás esetén: Töltse le az alkalmazást a Google Play áruházból, adja meg a szükséges engedélyeket és telepítse a programot!
