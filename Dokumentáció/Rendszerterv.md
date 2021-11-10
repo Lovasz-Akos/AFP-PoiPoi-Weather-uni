@@ -33,3 +33,8 @@ metódusokon.
 # Telepítési terv
 
 - Androidos alkalmazás esetén: Töltse le az alkalmazást a Google Play áruházból, adja meg a szükséges engedélyeket és telepítse a programot!
+
+# Karbantartási terv
+
+- Corrective Maintenance: A felhasználók által felfedezett és "user reportben" elküldött hibák javítása.
+- Adaptive Maintenance: A program naprakészen tartása és finomhangolása.
