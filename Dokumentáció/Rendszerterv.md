@@ -8,7 +8,7 @@ ahhoz, hogy intuitív legyen a használata.
 
 Felhasználók:
 
-Alapvetően csak a program felületéhez és a használatához férnek hozzá.
+- Alapvetően csak a program felületéhez és a használatához férnek hozzá.
 
 # Követelmények
 
