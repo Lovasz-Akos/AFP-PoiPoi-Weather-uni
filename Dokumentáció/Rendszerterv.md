@@ -36,6 +36,14 @@ kell Unit teszteket, a minél nagyobb kódlefedettséget szem előtt tartva. A
 metódusok akkor vannak kész, ha a tesztesetek hiba nélkül lefutnak az egyes
 metódusokon.
 
+- Alfa teszt:
+
+	- A teszt elsődleges célja: az eddig meglévő funkcióknak a különböző
+böngészőkkel, és androidokkal való kompatibilitásának tesztelése. A tesztet a
+fejlesztők végzik.
+Az eljárás sikeres, ha különböző böngészőkben és különböző androidokon is
+megfelelően működnek a különböző funkciók. A teszt időtartama egy hét.
+
 # Telepítési terv
 
 - Androidos alkalmazás esetén: Töltse le az alkalmazást a Google Play áruházból, adja meg a szükséges engedélyeket és telepítse a programot!
