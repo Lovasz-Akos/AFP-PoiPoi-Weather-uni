@@ -3,15 +3,24 @@
 A rendszer célja, hogy statisztikai adatok alapján egy időjárás előrejelzést tudjon jósolni, ami elsősorban ingyenes és reklám mentes.
 Ezen felül pedig rendelkezik minden olyan funkcióval ami ki tudja elégíteni a felhasználó igényeit is, viszont kellőképpen letisztult és felhasználóbarát a felülettel rendelkezik,
 ahhoz, hogy intuitív legyen a használata.
-Természetesen nem csak számítógépen lesz elérhető, hanem minél több platformon, tehát tableten és telefonon is.
-Használatához semmilyen regisztráció nem szükséges, bárki hozzáférhet.
 
-# Projektterv
+Fontos, hogy a felhasználó el tudjon igazodni a szoftverünkön.
+A rendszert a felhasználók majd webes felületen is tudják használni, tehát valamelyik böngésző szükséges lesz a használatához (Google Crome, Firefox, Opera, Safari, stb.).
+
+# Projektterv 
+
+Tag|Felelősség
+-|-
+Farkas Erik|Logika fejlesztő, Dokumentáció
+Zöldi Tóth István|Design fejlesztő, Dokumentáció
+Karsai Petra|Design tervező, Dokumentáció
+Maka Bettina|Rendszerszervező, Dokumentáció
 
 Alapvetően a dokumentum megírását nagyjából egyenlően próbáltuk elosztani.
 A program kódot szintén nagyjából felosztottuk egymás között, némelyik témakörben közösen dolgozunk majd.
-A csapat tagjai:
-Farkas Erik, Karsai Petra, Maka Bettina, Zöldi-Tóth István
+
+Természetesen nem csak számítógépen lesz elérhető, hanem minél több platformon, tehát tableten és telefonon is.
+Használatához semmilyen regisztráció nem szükséges, bárki hozzáférhet.
 
 # Üzleti folyamatok modellje
 
@@ -25,8 +34,13 @@ Fejlesztők:
 
 # Követelmények
 
-A program legfőbb feladata, hogy statisztikai adatok alapján egy időjárás előrejelzést tudjon jósolni.
-Mindemellett szeretnénk hogy a gépi tanulás legyen a program alapja és működési elve.
+- Admin:
+    - Teljes hozzáférése van a rendszerhez, és  bármilyen rendszerszereplőként beléphet a rendszerbe
+	
+- Nincsenek megvásárolt komponenseink
+	- Fejlesztői eszközök:
+		- Notepad++
+		- Python
 
 # Funkcionális terv
 
@@ -57,6 +71,15 @@ Ezért a metódusok megfelelő működésének biztosítására mindegyikhez ír
 kell Unit teszteket, a minél nagyobb kódlefedettséget szem előtt tartva. A
 metódusok akkor vannak kész, ha a tesztesetek hiba nélkül lefutnak az egyes
 metódusokon.
+
+- Beta teszt:
+	- Ezt a tesztet nem a fejlesztők, hanem a felhasználók vagy véletlenszerűen kiválasztott emberek végzik.
+Tesztelendő böngészők: Opera, Firefox, Google Chrome, Safari
+Tesztelendő android rendszerek:6.0.0(minimum), vagy újabbak
+A teszt időtartama maximum egy hét.
+A tesztelés alatt a tesztelő felhasználók visszajelzéseket küldhetnek a
+fejlesztőknek, probléma/hiba felmerülése esetén.
+Ha hiba lép fel, a fejlesztők kijavítják a lehető leghamarabb. Azonban ha sok hiba lépne fel a Beta tesz során, akkor a fejlesztőknek többet kell foglalkozni a kijavításukkal. Emiatt a tesztelési idő sokkal tovább is elhúzódhat.
 
 - Alfa teszt:
 
