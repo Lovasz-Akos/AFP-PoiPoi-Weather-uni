@@ -5,6 +5,16 @@ Ezen felül pedig rendelkezik minden olyan funkcióval ami ki tudja elégíteni 
 ahhoz, hogy intuitív legyen a használata.
 Fontos, hogy a felhasználó el tudjon igazodni a szoftverünkön.
 A rendszert a felhasználók majd webes felületen is tudják használni, tehát valamelyik böngésző szükséges lesz a használatához (Google Crome, Firefox, Opera, Safari, stb.).
+
+# Projektterv 
+
+Tag|Felelősség
+-|-
+Farkas Erik|Logika fejlesztő, Dokumentáció
+Zöldi Tóth István|Design fejlesztő, Dokumentáció
+Karsai Petra|Design tervező, Dokumentáció
+Maka Bettina|Rendszerszervező, Dokumentáció
+
 # Üzleti folyamatok modellje
 
 Felhasználók:
