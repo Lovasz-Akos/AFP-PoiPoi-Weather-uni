@@ -15,3 +15,6 @@ A csapat több tagja is szembesült már azzal a problémával, amikor hiretelen
 # Használati esetek
 
 A felhasználó legfőképpen egy vagy több időjárás előrejelzést lesz képes lefuttatni és ezalapján tudni, hogy milyen időjárás várható.
+
+
+- Python: A Python egy általános célú, nagyon magas szintű programozási nyelv. A nyelv tervezési filozófiája az olvashatóságot és a programozói munka megkönnyítését helyezi előtérbe a futási sebességgel szemben.
