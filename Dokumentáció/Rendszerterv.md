@@ -49,6 +49,15 @@ kell Unit teszteket, a minél nagyobb kódlefedettséget szem előtt tartva. A
 metódusok akkor vannak kész, ha a tesztesetek hiba nélkül lefutnak az egyes
 metódusokon.
 
+- Beta teszt:
+	- Ezt a tesztet nem a fejlesztők, hanem a felhasználók vagy véletlenszerűen kiválasztott emberek végzik.
+Tesztelendő böngészők: Opera, Firefox, Google Chrome, Safari
+Tesztelendő android rendszerek:6.0.0(minimum), vagy újabbak
+A teszt időtartama maximum egy hét.
+A tesztelés alatt a tesztelő felhasználók visszajelzéseket küldhetnek a
+fejlesztőknek, probléma/hiba felmerülése esetén.
+Ha hiba lép fel, a fejlesztők kijavítják a lehető leghamarabb. Azonban ha sok hiba lépne fel a Beta tesz során, akkor a fejlesztőknek többet kell foglalkozni a kijavításukkal. Emiatt a tesztelési idő sokkal tovább is elhúzódhat.
+
 # Telepítési terv
 
 - Androidos alkalmazás esetén: Töltse le az alkalmazást a Google Play áruházból, adja meg a szükséges engedélyeket és telepítse a programot!
