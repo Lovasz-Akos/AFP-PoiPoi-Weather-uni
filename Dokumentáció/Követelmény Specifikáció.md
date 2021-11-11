@@ -31,6 +31,10 @@ A projekt célja, egy olyan időjárási előrejelzéseket generáló program l�
 | K5 | Funkció | Beolvasás | Egy nagyobb adathalmaz feldolgozása, majd a program számára kedvező adatkstruktúra létrehozása |
 | K6 | Funkció | Előrejelzés | A rendelkezésre álló adatok tanulmányozásával, a program képes "megtippelni", hogy milyenek lesznek az időjárási viszonyok a jövőben |
 
+## 6. Irányott és szabad szöveges riportok
+
+A rendszer képes éghajlati és időjárási adatok felhasználásával előrejelzéseket generálni. Az egyik legfontosabb funkciója a machine learning amivel a program az elérhető adatok és a saját becslései felhasználásával "tanul", ezáltal képes egyre pontosabb erdemények megtippelésére.
+
 ## 7. Jelenlegi üzleti folyamatok modellje
 
 Bár a mai világban már rengeteg olyan program és applikáció létezik, ami időjárási előrejelzésekkel foglalkozik, a mi csapatunk mégis szeretné megpróbálni, egy olyan alkalmazással bővíteni eme programok palettáját, ami tudásával képes felvenni a versenyt társaival és még akár meg is haladja azt. Ebben a gépi tanulás lesz a segítségünkre. Célunk ezen technológia felhasználásával nem más mint egy olyan időjárási előrejelzéseket generáló program megírása, ami a lehető legpontosabban tudja "megjósolni" az időjárást. A kívánt eredmény eléréséhez, több ilyen applikáció működési elvét és többféle "tanulásra" képes algoritmust fogunk tanulmányozni.
