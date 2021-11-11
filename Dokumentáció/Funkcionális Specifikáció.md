@@ -11,3 +11,7 @@ A csapat több tagja is szembesült már azzal a problémával, amikor hiretelen
  - A felhasználónak semmilyen regisztráció nem szükséges a szoftver használatához
  - A felület mobilon lesz natív, de a reszponzív kialakítás miatt máson is használható lesz
  - A felhasználónak, amennyiben rendelkezik az "alkalmazással" nincs szükségre internetkapcsolatra a használathoz
+ 
+# Használati esetek
+
+A felhasználó legfőképpen egy vagy több időjárás előrejelzést lesz képes lefuttatni és ezalapján tudni, hogy milyen időjárás várható.
