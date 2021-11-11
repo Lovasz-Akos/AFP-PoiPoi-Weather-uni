@@ -3,7 +3,8 @@
 A rendszer célja, hogy statisztikai adatok alapján egy időjárás előrejelzést tudjon jósolni, ami elsősorban ingyenes és reklám mentes.
 Ezen felül pedig rendelkezik minden olyan funkcióval ami ki tudja elégíteni a felhasználó igényeit is, viszont kellőképpen letisztult és felhasználóbarát a felülettel rendelkezik,
 ahhoz, hogy intuitív legyen a használata.
-
+Fontos, hogy a felhasználó el tudjon igazodni a szoftverünkön.
+A rendszert a felhasználók majd webes felületen is tudják használni, tehát valamelyik böngésző szükséges lesz a használatához (Google Crome, Firefox, Opera, Safari, stb.).
 # Üzleti folyamatok modellje
 
 Felhasználók:
