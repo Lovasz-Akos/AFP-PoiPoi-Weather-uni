@@ -26,6 +26,9 @@ Felhasználók:
 A program legfőbb feladata, hogy statisztikai adatok alapján egy időjárás előrejelzést tudjon jósolni.
 Mindemellett szeretnénk hogy a gépi tanulás legyen a program alapja és működési elve.
 
+- Admin:
+    - Teljes hozzáférése van a rendszerhez, és  bármilyen rendszerszereplőként beléphet a rendszerbe
+
 # Teszt terv
 
 A tesztelések célja, hogy a tesztelések során esetleges hibák feltűnése esetén, azokat ki tudjuk javítani.
