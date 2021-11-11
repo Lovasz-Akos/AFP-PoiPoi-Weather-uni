@@ -28,6 +28,11 @@ Mindemellett szeretnénk hogy a gépi tanulás legyen a program alapja és műk�
 
 - Admin:
     - Teljes hozzáférése van a rendszerhez, és  bármilyen rendszerszereplőként beléphet a rendszerbe
+	
+- Nincsenek megvásárolt komponenseink
+	- Fejlesztői eszközök:
+		- Notepad++
+		- Python
 
 # Teszt terv
 
