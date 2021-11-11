@@ -5,3 +5,9 @@
 A kívánt eredmény eléréséhez, több ilyen applikáció működési elvét és többféle "tanulásra" képes algoritmust fogunk tanulmányozni.
 Manapság egyre többen igényelik a pontosan/megfelelően működő időjárás előrejelző szoftvereket, weboldalakat mivel a mai világban egyre kiszámíthatatlanabb időjárás, megnehezíti az emberek életét.
 A csapat több tagja is szembesült már azzal a problémával, amikor hiretelen teljesen más időjárás volt mint amit az időjárás előrejelző szoftver kiszámolt.
+
+# Igényelt üzleti folyamatok modellje
+
+ - A felhasználónak semmilyen regisztráció nem szükséges a szoftver használatához
+ - A felület mobilon lesz natív, de a reszponzív kialakítás miatt máson is használható lesz
+ - A felhasználónak, amennyiben rendelkezik az "alkalmazással" nincs szükségre internetkapcsolatra a használathoz
