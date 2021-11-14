@@ -38,11 +38,16 @@ A rendszer képes éghajlati és időjárási adatok felhasználásával előrej
 ## 7. Rendszerre vonatkozó törvények, szabványok, ajánlások
 
 A programunk teljesen ingyenes, bárki használhatja.
-Fogalmak:
-
-- Machine learning: A gépi tanulás matematikai adatmodellekkel tanít be számítógépeket közvetlen felügyelet nélkül. Ez a mesterséges intelligencia (AI) egy részhalmaza. A gépi tanulás algoritmusokkal azonosít mintákat az adatokban, amelyekkel ezután adatmodellt készít, és előrejelzéseket végez.
-- Python: A Python egy általános célú, nagyon magas szintű programozási nyelv. A nyelv tervezési filozófiája az olvashatóságot és a programozói munka megkönnyítését helyezi előtérbe a futási sebességgel szemben.
 
 ## 8. Jelenlegi üzleti folyamatok modellje
 
-Bár a mai világban már rengeteg olyan program és applikáció létezik, ami időjárási előrejelzésekkel foglalkozik, a mi csapatunk mégis szeretné megpróbálni, egy olyan alkalmazással bővíteni eme programok palettáját, ami tudásával képes felvenni a versenyt társaival és még akár meg is haladja azt. Ebben a gépi tanulás lesz a segítségünkre. Célunk ezen technológia felhasználásával nem más mint egy olyan időjárási előrejelzéseket generáló program megírása, ami a lehető legpontosabban tudja "megjósolni" az időjárást. A kívánt eredmény eléréséhez, több ilyen applikáció működési elvét és többféle "tanulásra" képes algoritmust fogunk tanulmányozni.
+Bár a mai világban már rengeteg olyan program és applikáció létezik, ami időjárási előrejelzésekkel foglalkozik, a mi csapatunk mégis szeretné megpróbálni, egy olyan alkalmazással bővíteni eme programok palettáját, ami tudásával képes megközelíteni a versenytársait. Általában ezek a programok a jelenlegi időjárást közlik, vagy csak pár napos előrejelzésekkel látnak el minket. A mi applikációnk célja viszont az, hogy akár 1 év távlatában is lehessen előrejelzéseket létrehozni. Ebben a gépi tanulás lesz a segítségünkre. Ezen technológia felhasználásával szeretnénk elérni, hogy olyan időjárási előrejelzéseket generáljon a program, amik a lehető legpontosabbak még ilyen nagyobb idősávok használata esetén is. A kívánt eredmény eléréséhez, több ilyen applikáció működési elvét és többféle machine learning modellt fogunk tanulmányozni.
+
+## 9. Igényelt üzleti folyamatok modellje
+
+Csapatunk célja egy olyan időjárási előrejelzéseket létrehozó applikáció létrehozása, ami elsősorban ingyenes, reklámmentes és bizonyos határértékeken belűl képes az imént említett előrejelzéseket létrehozni. Bár programunk nem veheti fel a meteorológiai szolgálatok pár napos előrejelzéseinek pontosságával a versenyt, az applikációnk errősége másból adódik. Ugyanis ez a program képes (jelen esetben) Budapest éghajlatának 119 évnyi adatát feldolgozni, elemezni és ebből hosszútávú, akár egy éves előrejelzéseket is generálni a felhasználó számára. Legyen szó egy adott nap időjárásáról vagy akár az év mindennapjáról is.
+
+## 10. Fogalomszótár
+
+- Machine learning: A gépi tanulás matematikai adatmodellekkel tanít be számítógépeket közvetlen felügyelet nélkül. Ez a mesterséges intelligencia (AI) egy részhalmaza. A gépi tanulás algoritmusokkal azonosít mintákat az adatokban, amelyekkel ezután adatmodellt készít, és előrejelzéseket végez.
+- Python: A Python egy általános célú, nagyon magas szintű programozási nyelv. A nyelv tervezési filozófiája az olvashatóságot és a programozói munka megkönnyítését helyezi előtérbe a futási sebességgel szemben.
