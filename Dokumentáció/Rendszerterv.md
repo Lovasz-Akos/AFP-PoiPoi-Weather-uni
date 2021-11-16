@@ -39,11 +39,10 @@ Fejlesztők:
 - Admin: Teljes hozzáférése van a rendszerhez, és  bármilyen rendszerszereplőként beléphet a rendszerbe
 
 - Nincsenek megvásárolt komponenseink
-
 - Fejlesztői eszközök:
-- Notepad++
-- Python
-- Visual Studio Code
+  - Notepad++
+  - Python
+  - Visual Studio Code
 
 ## Funkcionális terv
 
@@ -55,7 +54,7 @@ Rendszerszereplők:
 Rendszerhasználati esetek és lefutásaik:
 
 - Felhasználó:
-- Csak részleges hozzáférése van a rendszerhez
+  - Csak részleges hozzáférése van a rendszerhez
 
 ## Fizikai környezet
 
