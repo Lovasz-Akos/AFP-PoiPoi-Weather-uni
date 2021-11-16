@@ -21,7 +21,8 @@ def generateDateCodes(DataFrame):
 def main():
     DailyDatas = readSource()
     DateCodes=pd.DataFrame(generateDateCodes(DailyDatas),columns=['DátumKód'])
-    print(DateCodes)
+    DailyDatas['DátumKód']=DateCodes
+    print(DailyDatas)
     
 main()
     
