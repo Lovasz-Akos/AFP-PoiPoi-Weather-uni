@@ -1,14 +1,16 @@
-# Áttekintés
+# Funkcionális Specifikáció
+
+## Áttekintés
 
 A rendszer célja, hogy statisztikai adatok alapján egy időjárás előrejelzést tudjon jósolni, ami elsősorban ingyenes és reklám mentes.
 Ezen felül pedig rendelkezik minden olyan funkcióval ami ki tudja elégíteni a felhasználó igényeit is, viszont kellőképpen letisztult és felhasználóbarát a felülettel rendelkezik,
 ahhoz, hogy intuitív legyen a használata.
 
+## Jelenlegi helyzet
 
-# Jelenlegi helyzet
 Bár rengeteg időjárás előrejelző alkalmazás található a piacon, viszont ezek nagyrésze általában rengeteg zavaró reklámot tartalmaz, vagy esetleg bizonyos funkciók csak fizetés ellenében használhatóak.
 
-# Követelménylista
+## Követelménylista
 
 | Id | Modul | Név | Leírás |
 | :---: | --- | --- | --- |
@@ -23,30 +25,28 @@ A kívánt eredmény eléréséhez, több ilyen applikáció működési elvét 
 Manapság egyre többen igényelik a pontosan/megfelelően működő időjárás előrejelző szoftvereket, weboldalakat mivel a mai világban egyre kiszámíthatatlanabb időjárás, megnehezíti az emberek életét.
 A csapat több tagja is szembesült már azzal a problémával, amikor hiretelen teljesen más időjárás volt mint amit az időjárás előrejelző szoftver kiszámolt.
 
-# Jelenlegi üzleti folyamatok modellje
+## Jelenlegi üzleti folyamatok modellje
 
 Bár a mai világban már rengeteg olyan program és applikáció létezik, ami időjárási előrejelzésekkel foglalkozik, a mi csapatunk mégis szeretné megpróbálni, egy olyan alkalmazással bővíteni eme programok palettáját, ami tudásával képes felvenni a versenyt társaival és még akár meg is haladja azt.
 Ebben a gépi tanulás lesz a segítségünkre.
 Célunk ezen technológia felhasználásával nem más mint egy olyan időjárási előrejelzéseket generáló program megírása, ami a lehető legpontosabban tudja "megjósolni" az időjárást.
 
+## Igényelt üzleti folyamatok modellje
 
-# Igényelt üzleti folyamatok modellje
+- A felhasználónak semmilyen regisztráció nem szükséges a szoftver használatához
+- A felület mobilon lesz natív, de a reszponzív kialakítás miatt máson is használható lesz
+- A felhasználónak, amennyiben rendelkezik az "alkalmazással" nincs szükségre internetkapcsolatra a használathoz
 
- - A felhasználónak semmilyen regisztráció nem szükséges a szoftver használatához
- - A felület mobilon lesz natív, de a reszponzív kialakítás miatt máson is használható lesz
- - A felhasználónak, amennyiben rendelkezik az "alkalmazással" nincs szükségre internetkapcsolatra a használathoz
- 
-# Használati esetek
+## Használati esetek
 
 A felhasználó legfőképpen egy vagy több időjárás előrejelzést lesz képes lefuttatni és ezalapján tudni, hogy milyen időjárás várható.
 
-
-# Forgatókönyvek
+## Forgatókönyvek
 
 Az alkamazás célja különböző magyarországi időjárási adatok feldolgozása, ezen adatok tárolása későbbi elemzések céljából. A program a korábbi éghajlatai adatok felhasználásával megkísérli az időjárás alakulásának a "megjósolását", akár napi vagy éves szinten is, mindezt minnél pontosabb eredménnyel. A becslések pontosságát pedig a gépi tanulással próbálja majd a program folyamatosan pontosítani és javítani, ezáltal is elősegítve a megfelelő jóslási erdemények létrehozását. Az eredményeket eltárolva pedig lehetséges lesz a "tippek" és a valós adatok összehasonlítása is. Ehhez pedig egy egyszerű felhasználói felület lesz a segítségünkre.
 
-# Fogalomszótár
+## Fogalomszótár
 
-- Machine learning: A gépi tanulás matematikai adatmodellekkel tanít be számítógépeket közvetlen felügyelet nélkül. Ez a mesterséges intelligencia (AI) egy részhalmaza. A gépi tanulás algoritmusokkal azonosít mintákat az adatokban, amelyekkel ezután adatmodellt készít, és előrejelzéseket végez. 
+- Machine learning: A gépi tanulás matematikai adatmodellekkel tanít be számítógépeket közvetlen felügyelet nélkül. Ez a mesterséges intelligencia (AI) egy részhalmaza. A gépi tanulás algoritmusokkal azonosít mintákat az adatokban, amelyekkel ezután adatmodellt készít, és előrejelzéseket végez.
 
 - Python: A Python egy általános célú, nagyon magas szintű programozási nyelv. A nyelv tervezési filozófiája az olvashatóságot és a programozói munka megkönnyítését helyezi előtérbe a futási sebességgel szemben.
