@@ -99,3 +99,7 @@ megfelelően működnek a különböző funkciók. A teszt időtartama egy hét.
 - Corrective Maintenance: A felhasználók által felfedezett és "user reportben" elküldött hibák javítása.
 - Adaptive Maintenance: A program naprakészen tartása és finomhangolása.
 - Perfective Maintenance: A szoftver hosszútávú használata érdekében végzett módosítások, új funkciók, a szoftver teljesítményének és működési megbízhatóságának javítása.
+
+## Architekturális terv
+
+A program működéséhez szükség van a www.met.hu-n található a 1901-től 2020-ig mért éghajlati adatsorokra, amiket gépen lokálisan, a megfelelő mappában kell tárolni, mivel a program ezen adatok feldolgozásával készíti el az előrejelzésket. A három napos pontos előrejelzés funkció használatához pedig internetkapcsolat is szükséges, mivel a program adatigényeinek ezen részét egy API szolgálja ki JSON objektumokkal.
