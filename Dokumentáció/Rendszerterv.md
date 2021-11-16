@@ -103,3 +103,7 @@ megfelelően működnek a különböző funkciók. A teszt időtartama egy hét.
 ## Architekturális terv
 
 A program működéséhez szükség van a www.met.hu-n található a 1901-től 2020-ig mért éghajlati adatsorokra, amiket gépen lokálisan, a megfelelő mappában kell tárolni, mivel a program ezen adatok feldolgozásával készíti el az előrejelzésket. A három napos pontos előrejelzés funkció használatához pedig internetkapcsolat is szükséges, mivel a program adatigényeinek ezen részét egy API szolgálja ki JSON objektumokkal.
+
+## Implementációs terv
+
+A fejlesztés során használt programozási nyelv a Python, emellett több könyvtárat és modult is alkalmazni fogunk. A Python rengeteg beépített modullal is rendelkezik a különböző felhasználási esetekhez. A táblázatos adatok tárolására a CSV fájlokat használhatjuk. Az adatok importálása és exportálásara az egyik leggyakrabban használt formátum. A Python rendelkezik egy CSV nevű modullal, a CSV fájlok könnyű kezelése érdekében. Egy másik ilyen modul a NumPy, egy Lineáris Algebra Könyvtár, amit data science során, (magyarul adattudomány) használnak. Főként a gépi tanulási projektekben használatos, sok matematikai számítást tartalmaz, és rengeteg más modul előfeltétele. A Pandas egy open source könyvtár ami a NumPy-ra épül. Könnyű adatkezelést, data cleaning-et, analízist tesz lehetővé, sajátos könnyen értelmezhető és kezelhető adatstruktúrát alkothatunk vele. A gépi tanuláshoz pedig az open source scikit-learn modult használjuk, ami szintén a NumPy-ra épül, ebben a modulban több gépi tanulási modell is megtalálható.
