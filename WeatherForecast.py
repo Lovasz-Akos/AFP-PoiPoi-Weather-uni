@@ -16,13 +16,24 @@ def generateDateCodes(DataFrame):
         DateCodes[i]= date.month*100 + date.day
         i=i+1
     return DateCodes
-        
+
+def generateNKPredictors(DataFrame):
+    # Az NK_Predictors névben az NK a Napi Középhőmérsékletre utal
+    NK_Predictors = DataFrame
+    NK_Predictors = NK_Predictors.drop(['Dátum'],axis=1)
+    NK_Predictors = NK_Predictors.drop(['Napi Maximumhőmérséklet'],axis=1)
+    NK_Predictors = NK_Predictors.drop(['Napi Minimumhőmérséklet'],axis=1)
+    NK_Predictors = NK_Predictors.drop(['Napi Csapadékösszeg'],axis=1)                              
+    NK_Predictors = NK_Predictors.drop(['Napi Csapadékösszeg Fajtája'],axis=1)
+    NK_Predictors = NK_Predictors.drop(['Napfénytartam Napi Összege'],axis=1)
+    return NK_Predictors    
     
 def main():
     DailyDatas = readSource()
     DateCodes=pd.DataFrame(generateDateCodes(DailyDatas),columns=['DátumKód'])
     DailyDatas['DátumKód']=DateCodes
-    print(DailyDatas)
+    NK_Predictors=generateNKPredictors(DailyDatas)
+    print(NK_Predictors)
     
 main()
     
