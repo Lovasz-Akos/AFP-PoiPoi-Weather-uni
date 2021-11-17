@@ -101,3 +101,4 @@ Ha hiba lép fel, a fejlesztők kijavítják a lehető leghamarabb. Azonban ha s
 - Corrective Maintenance: A felhasználók által felfedezett és "user reportben" elküldött hibák javítása.
 - Adaptive Maintenance: A program naprakészen tartása és finomhangolása.
 - Perfective Maintenance: A szoftver hosszútávú használata érdekében végzett módosítások, új funkciók, a szoftver teljesítményének és működési megbízhatóságának javítása.
+- Preventive Maintenance: Olyan problémák elhárítása, amelyek még nem tűnnek fontosnak, de később komoly problémákat okozhatnak.
