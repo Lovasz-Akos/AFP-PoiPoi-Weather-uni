@@ -34,9 +34,6 @@ Fejlesztők:
 
 # Követelmények
 
-- Admin:
-    - Teljes hozzáférése van a rendszerhez, és  bármilyen rendszerszereplőként beléphet a rendszerbe
-	
 - Nincsenek megvásárolt komponenseink
 	- Fejlesztői eszközök:
 		- Notepad++
@@ -53,6 +50,9 @@ Rendszerhasználati esetek és lefutásaik:
 - Felhasználó:
 	- Csak részleges hozzáférése van a rendszerhez
 
+- Admin:
+    - Teljes hozzáférése van a rendszerhez, és  bármilyen rendszerszereplőként beléphet a rendszerbe
+	
 # Fizikai környezet
 
 - Az alkalmazás Android és web platformra, hordozható eszközökre (például: okostelefonok, táblagépek) készül.
