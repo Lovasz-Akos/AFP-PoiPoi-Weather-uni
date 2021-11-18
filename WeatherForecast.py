@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
+from sklearn.tree import DecisionTreeRegressor
 
 def readSource():
     DailyDatas_columns=['Dátum','Napi Középhőmérséklet','Napi Maximumhőmérséklet','Napi Minimumhőmérséklet','Napi Csapadékösszeg','Napi Csapadékösszeg Fajtája','Napfénytartam Napi Összege','Globálsugárzás Napi Összege']
@@ -38,6 +39,13 @@ def weatherForecastWithLinearRegression(DataFrame):
     linearreg.fit(X_train,y_train)
     return linearreg
     
+def weatherForecastWithDecisionTree(DataFrame):
+    X=pd.DataFrame(DataFrame['DátumKód'],columns=['DátumKód'])
+    y=pd.DataFrame(DataFrame['Napi Középhőmérséklet'],columns=['Napi Középhőmérséklet'])   
+    X_train, X_test, y_train, y_test= train_test_split(X, y, test_size=0.5)   
+    treeModel=DecisionTreeRegressor()
+    treeModel.fit(X_train,y_train)
+    return treeModel
         
 def main():
     DailyDatas = readSource()
@@ -48,8 +56,8 @@ def main():
     # 11. hó 18. nap DátumKódja: 1118
     PredDate=[1118]
     PredDate=pd.DataFrame(PredDate,columns=['DátumKód'])
-    linearreg=weatherForecastWithLinearRegression(NK_Predictors)
-    print(linearreg.predict(PredDate))
+    treeModel=weatherForecastWithDecisionTree(NK_Predictors)
+    print("\nEzen a napon (2018.11.18) a napi középhőmérséklet a következő lesz: " + str(format(treeModel.predict(PredDate)[0], '.2f')) + " °C " + "\n")
     
     
     
