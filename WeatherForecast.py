@@ -46,18 +46,29 @@ def weatherForecastWithDecisionTree(DataFrame):
     treeModel=DecisionTreeRegressor()
     treeModel.fit(X_train,y_train)
     return treeModel
+
+def weatherForecastByDate(model):
+    print("\n")
+    print("Add meg az előrejelzés dátumát:")
+    print("\n")
+    Input = input("Év: ")
+    Input = input("Hónap(1-12): ")
+    month = Input
+    Input = input("Nap (01-31): ")
+    day = Input
+    PredDate=[month+day]
+    PredDate=pd.DataFrame(PredDate,columns=['DátumKód'])
+    return model.predict(PredDate)[0]
+    
+
         
 def main():
     DailyDatas = readSource()
     DateCodes=pd.DataFrame(generateDateCodes(DailyDatas),columns=['DátumKód'])
     DailyDatas['DátumKód']=DateCodes
     NK_Predictors=generateNKPredictors(DailyDatas)
-    
-    # 11. hó 18. nap DátumKódja: 1118
-    PredDate=[1118]
-    PredDate=pd.DataFrame(PredDate,columns=['DátumKód'])
     treeModel=weatherForecastWithDecisionTree(NK_Predictors)
-    print("\nEzen a napon (2018.11.18) a napi középhőmérséklet a következő lesz: " + str(format(treeModel.predict(PredDate)[0], '.2f')) + " °C " + "\n")
+    print("\nEzen a napon a napi középhőmérséklet a következő lesz: " + str(format(weatherForecastByDate(treeModel), '.2f')) + " °C " + "\n")
     
     
     
