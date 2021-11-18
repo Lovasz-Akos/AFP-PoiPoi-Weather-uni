@@ -13,7 +13,8 @@ def readSource():
     return DailyDatas
 
 def generateDateCodes(DataFrame):
-    DateCodes=[0]*DataFrame.index.stop
+    
+    DateCodes=np.empty(DataFrame.index.stop,dtype=np.intc)
     i=0
     for date in DataFrame['Dátum']:
         DateCodes[i]= date.month*100 + date.day
