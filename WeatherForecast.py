@@ -151,8 +151,10 @@ def main():
     elif(Input == '2'):
         DailyDatas=readHistoryDataExtra()
         FiveInputNK_Predictors = generateFiveInputNKPredictors(DailyDatas)
-        print(FiveInputNK_Predictors)
-    
+        treeModel=weatherForecastWithDecisionTree(FiveInputNK_Predictors[['Maximum Temperature_1','Minimum Temperature_1','Visibility_1','Cloud Cover_1','Relative Humidity_1','Maximum Temperature_2','Minimum Temperature_2','Visibility_2','Cloud Cover_2','Relative Humidity_2','Maximum Temperature_3','Minimum Temperature_3','Visibility_3','Cloud Cover_3','Relative Humidity_3','Maximum Temperature_4','Minimum Temperature_4','Visibility_4','Cloud Cover_4','Relative Humidity_4']],FiveInputNK_Predictors[['Temperature']] )
+        testData=FiveInputNK_Predictors
+        testData=testData.drop(['Temperature'], axis=1)
+        print("2021.11.21-én a napi középhőmérséklet ennyi lesz: "+str(treeModel.predict(testData.loc[[285]])[0])+"°C")
     
     
 main()
