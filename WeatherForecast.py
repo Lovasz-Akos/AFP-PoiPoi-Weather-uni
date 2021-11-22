@@ -3,6 +3,7 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.tree import DecisionTreeRegressor
+pd.options.mode.chained_assignment = None  # default='warn'
 
 def readSource():
     DailyDatas_columns=['Dátum','Napi Középhőmérséklet','Napi Maximumhőmérséklet','Napi Minimumhőmérséklet','Napi Csapadékösszeg','Napi Csapadékösszeg Fajtája','Napfénytartam Napi Összege','Globálsugárzás Napi Összege']
@@ -11,6 +12,13 @@ def readSource():
     DailyDatas['Dátum']=pd.to_datetime(DailyDatas['Dátum'])
     DailyDatas=DailyDatas.drop(['Globálsugárzás Napi Összege'], axis=1)
     return DailyDatas
+
+def readHistoryDataExtra():
+    DataFrame_columns=['Name','Date time','Maximum Temperature','Minimum Temperature','Temperature','Wind Chill','Heat Index','Precipitation','Snow','Snow Depth','Wind Speed','Wind Direction','Wind Gust','Visibility','Cloud Cover','Relative Humidity','Conditions']
+    DataFrame = pd.read_csv('Adatforrás/Budapest/history_data_extra.csv', sep=',', skiprows=1, names=DataFrame_columns)
+    DataFrame['Date time']=pd.to_datetime(DataFrame['Date time'])
+    return DataFrame
+    
 
 def generateDateCodes(DataFrame):
     
@@ -64,12 +72,24 @@ def weatherForecastByDate(model):
 
         
 def main():
-    DailyDatas = readSource()
-    DateCodes=pd.DataFrame(generateDateCodes(DailyDatas),columns=['DátumKód'])
-    DailyDatas['DátumKód']=DateCodes
-    NK_Predictors=generateNKPredictors(DailyDatas)
-    treeModel=weatherForecastWithDecisionTree(NK_Predictors)
-    print("\nEzen a napon a napi középhőmérséklet a következő lesz: " + str(format(weatherForecastByDate(treeModel), '.2f')) + " °C " + "\n")
+    Input = 0
+    while Input != '1' and Input != '2':
+        print("\n")
+        print("Válassz a két opció közül:")
+        print("1. Dátum alapú előrejelzés")
+        print("2. Egy napos előrejelzés mostani éghajlati adatok alapján")
+        print("\n")
+        Input = input("Válaszd ki a megfelelő opció sorszámát (1-2): ")
+    if(Input == '1'):
+        DailyDatas = readSource()
+        DateCodes=pd.DataFrame(generateDateCodes(DailyDatas),columns=['DátumKód'])
+        DailyDatas['DátumKód']=DateCodes
+        NK_Predictors=generateNKPredictors(DailyDatas)
+        treeModel=weatherForecastWithDecisionTree(NK_Predictors)
+        print("\nEzen a napon a napi középhőmérséklet a következő lesz: " + str(format(weatherForecastByDate(treeModel), '.2f')) + " °C " + "\n")
+    elif(Input == '2'):
+        DailyDatas=readHistoryDataExtra()
+        print(DailyDatas)
     
     
     
