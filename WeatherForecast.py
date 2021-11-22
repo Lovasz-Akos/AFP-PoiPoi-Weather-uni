@@ -29,6 +29,73 @@ def generateDateCodes(DataFrame):
         i=i+1
     return DateCodes
 
+def generateFiveInputNKPredictors(DataFrame):
+    Temp_Predictors=DataFrame
+    Temp_Predictors=Temp_Predictors.drop(['Name'], axis=1)
+    Temp_Predictors=Temp_Predictors.drop(['Date time'], axis=1)
+    Temp_Predictors=Temp_Predictors.drop(['Wind Chill'], axis=1)
+    Temp_Predictors=Temp_Predictors.drop(['Heat Index'], axis=1)
+    Temp_Predictors=Temp_Predictors.drop(['Precipitation'], axis=1)
+    Temp_Predictors=Temp_Predictors.drop(['Snow'], axis=1)
+    Temp_Predictors=Temp_Predictors.drop(['Snow Depth'], axis=1)
+    Temp_Predictors=Temp_Predictors.drop(['Wind Speed'], axis=1)
+    Temp_Predictors=Temp_Predictors.drop(['Wind Direction'], axis=1)
+    Temp_Predictors=Temp_Predictors.drop(['Wind Gust'], axis=1)
+    Temp_Predictors=Temp_Predictors.drop(['Conditions'], axis=1)
+    Temp_Predictors['Maximum Temperature_1']=""
+    # Inputs for Temperature: Maximum Temperature | Minimum Temperature | Visibility | Cloud Cover | Relative Humidity
+    
+    # Ez a ciklus létrehozza az új oszlopokat a DataFrame-ben a megfelelő névvel
+    # Minimum Temperature_1 nevű oszlop pl. az aktuális elemhez képest, ez előző elem Minimum Hőmérsékletét tartalmazza
+    # A Minimum Temperature_4 pedig az aktuális elemhez képest, 4 indexxel korábbi nap Minimum hőmérsékeltét
+    for j in range(4):
+            col_name='Maximum Temperature_'+str(j+1)
+            Temp_Predictors[col_name]=""
+            col_name='Minimum Temperature_'+str(j+1)
+            Temp_Predictors[col_name]=""
+            col_name='Visibility_'+str(j+1)
+            Temp_Predictors[col_name]=""
+            col_name='Cloud Cover_'+str(j+1)
+            Temp_Predictors[col_name]=""
+            col_name='Relative Humidity_'+str(j+1)
+            Temp_Predictors[col_name]=""
+    
+    i=4
+    # Az i-t azért 4-re állítom mert csak a 4. elemtől tudom elkezdeni 4 napig visszamenő adat gyűjtést
+    # Az új, fentebb említett oszlopok itt töltődnek fel adatokkal
+    while i < len(Temp_Predictors):
+        for j in range(4):
+            col_name='Maximum Temperature_'+str(j+1)
+            Temp_Predictors[col_name][i]=Temp_Predictors['Maximum Temperature'][i-(j+1)]
+            
+            col_name='Minimum Temperature_'+str(j+1)
+            Temp_Predictors[col_name][i]=Temp_Predictors['Minimum Temperature'][i-(j+1)]
+            
+            col_name='Visibility_'+str(j+1)
+            Temp_Predictors[col_name][i]=Temp_Predictors['Visibility'][i-(j+1)]
+            
+            col_name='Cloud Cover_'+str(j+1)
+            Temp_Predictors[col_name][i]=Temp_Predictors['Cloud Cover'][i-(j+1)]
+            
+            col_name='Relative Humidity_'+str(j+1)
+            Temp_Predictors[col_name][i]=Temp_Predictors['Relative Humidity'][i-(j+1)]
+        i=i+1;
+    
+    # Az első 4 sor "eldobása"
+    Temp_Predictors = Temp_Predictors.drop(labels=[0,1,2,3], axis=0)
+    
+    # Újra indexelés, mivel ha ez nem történne meg, 4-től kezdőde a DataFrame indexelése
+    Temp_Predictors=Temp_Predictors.reset_index(drop=True)
+    
+    #számunkra már fölösleges oszlopok eldobása
+    Temp_Predictors=Temp_Predictors.drop(['Maximum Temperature'], axis=1)
+    Temp_Predictors=Temp_Predictors.drop(['Minimum Temperature'], axis=1)
+    Temp_Predictors=Temp_Predictors.drop(['Visibility'], axis=1)
+    Temp_Predictors=Temp_Predictors.drop(['Cloud Cover'], axis=1)
+    Temp_Predictors=Temp_Predictors.drop(['Relative Humidity'], axis=1)
+    
+    return Temp_Predictors
+
 def generateNKPredictors(DataFrame):
     # Az NK_Predictors névben az NK a Napi Középhőmérsékletre utal
     NK_Predictors = DataFrame
@@ -89,7 +156,8 @@ def main():
         print("\nEzen a napon a napi középhőmérséklet a következő lesz: " + str(format(weatherForecastByDate(treeModel), '.2f')) + " °C " + "\n")
     elif(Input == '2'):
         DailyDatas=readHistoryDataExtra()
-        print(DailyDatas)
+        FiveInputNK_Predictors = generateFiveInputNKPredictors(DailyDatas)
+        print(FiveInputNK_Predictors)
     
     
     
