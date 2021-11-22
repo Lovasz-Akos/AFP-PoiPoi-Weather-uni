@@ -107,20 +107,14 @@ def generateNKPredictors(DataFrame):
     NK_Predictors = NK_Predictors.drop(['Napfénytartam Napi Összege'],axis=1)
     return NK_Predictors    
     
-def weatherForecastWithLinearRegression(DataFrame):
-    X=pd.DataFrame(DataFrame['DátumKód'],columns=['DátumKód'])
-    y=pd.DataFrame(DataFrame['Napi Középhőmérséklet'],columns=['Napi Középhőmérséklet'])   
-    X_train, X_test, y_train, y_test= train_test_split(X, y, test_size=0.5)   
+def weatherForecastWithLinearRegression(X,y):
     linearreg=LinearRegression()
-    linearreg.fit(X_train,y_train)
+    linearreg.fit(X,y)
     return linearreg
     
-def weatherForecastWithDecisionTree(DataFrame):
-    X=pd.DataFrame(DataFrame['DátumKód'],columns=['DátumKód'])
-    y=pd.DataFrame(DataFrame['Napi Középhőmérséklet'],columns=['Napi Középhőmérséklet'])   
-    X_train, X_test, y_train, y_test= train_test_split(X, y, test_size=0.5)   
+def weatherForecastWithDecisionTree(X,y): 
     treeModel=DecisionTreeRegressor()
-    treeModel.fit(X_train,y_train)
+    treeModel.fit(X,y)
     return treeModel
 
 def weatherForecastByDate(model):
@@ -152,7 +146,7 @@ def main():
         DateCodes=pd.DataFrame(generateDateCodes(DailyDatas),columns=['DátumKód'])
         DailyDatas['DátumKód']=DateCodes
         NK_Predictors=generateNKPredictors(DailyDatas)
-        treeModel=weatherForecastWithDecisionTree(NK_Predictors)
+        treeModel=weatherForecastWithDecisionTree(NK_Predictors[['DátumKód']] ,NK_Predictors[['Napi Középhőmérséklet']] )
         print("\nEzen a napon a napi középhőmérséklet a következő lesz: " + str(format(weatherForecastByDate(treeModel), '.2f')) + " °C " + "\n")
     elif(Input == '2'):
         DailyDatas=readHistoryDataExtra()
