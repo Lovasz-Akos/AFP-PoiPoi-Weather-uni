@@ -3,6 +3,9 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.tree import DecisionTreeRegressor
+from datetime import datetime, timedelta, date
+import requests
+
 pd.options.mode.chained_assignment = None  # default='warn'
 
 def readSource():
@@ -105,7 +108,16 @@ def generateNKPredictors(DataFrame):
     NK_Predictors = NK_Predictors.drop(['Napi Csapadékösszeg'],axis=1)                              
     NK_Predictors = NK_Predictors.drop(['Napi Csapadékösszeg Fajtája'],axis=1)
     NK_Predictors = NK_Predictors.drop(['Napfénytartam Napi Összege'],axis=1)
-    return NK_Predictors    
+    return NK_Predictors   
+
+def GetHistoricalWeatherData(inputDate):
+    startDate = inputDate
+    endDate = startDate.today() - timedelta(days=3)
+    queryURL="https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/weatherdata/history?aggregateHours=24&combinationMethod=aggregate&startDateTime="+str(endDate.year)+"-"+str(endDate.month)+"-"+str(endDate.day)+"T00%3A00%3A00&endDateTime="+str(startDate.year)+"-"+str(startDate.month)+"-"+str(startDate.day)+"T00%3A00%3A00&maxStations=-1&maxDistance=-1&contentType=json&unitGroup=metric&locationMode=single&key=T735TQNAUCYZNFTQGDSSHTTSA&dataElements=default&locations=Budapest"
+    foreCastQueryURL="https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/weatherdata/forecast?aggregateHours=24&combinationMethod=aggregate&contentType=json&unitGroup=metric&locationMode=single&key=T735TQNAUCYZNFTQGDSSHTTSA&dataElements=default&locations=Budapest"
+    df = pd.read_json(queryURL)
+    foreCastDF= pd.read_json(foreCastQueryURL)
+    return df 
     
 def weatherForecastWithLinearRegression(X,y):
     linearreg=LinearRegression()
@@ -152,9 +164,12 @@ def main():
         DailyDatas=readHistoryDataExtra()
         FiveInputNK_Predictors = generateFiveInputNKPredictors(DailyDatas)
         treeModel=weatherForecastWithDecisionTree(FiveInputNK_Predictors[['Maximum Temperature_1','Minimum Temperature_1','Visibility_1','Cloud Cover_1','Relative Humidity_1','Maximum Temperature_2','Minimum Temperature_2','Visibility_2','Cloud Cover_2','Relative Humidity_2','Maximum Temperature_3','Minimum Temperature_3','Visibility_3','Cloud Cover_3','Relative Humidity_3','Maximum Temperature_4','Minimum Temperature_4','Visibility_4','Cloud Cover_4','Relative Humidity_4']],FiveInputNK_Predictors[['Temperature']] )
-        testData=FiveInputNK_Predictors
-        testData=testData.drop(['Temperature'], axis=1)
-        print("2021.11.21-én a napi középhőmérséklet ennyi lesz: "+str(treeModel.predict(testData.loc[[285]])[0])+"°C")
+        #testData=FiveInputNK_Predictors
+        #testData=testData.drop(['Temperature'], axis=1)
+        #print("2021.11.21-én a napi középhőmérséklet ennyi lesz: "+str(treeModel.predict(testData.loc[[285]])[0])+"°C")
+        testData= GetHistoricalWeatherData(date.today())
+        # TEST: Max Temp elérése a testData-ból: testData['location']['values'][0]['maxt'], ennek 14-nek kell lennie ha az adatstruktúra jó
+        print(testData['location']['values'][0]['maxt'])
     
     
 main()
