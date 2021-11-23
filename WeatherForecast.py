@@ -3,6 +3,9 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.tree import DecisionTreeRegressor
+from datetime import datetime, timedelta, date
+import requests
+
 pd.options.mode.chained_assignment = None  # default='warn'
 
 def readSource():
@@ -42,9 +45,7 @@ def generateFiveInputNKPredictors(DataFrame):
     Temp_Predictors=Temp_Predictors.drop(['Wind Direction'], axis=1)
     Temp_Predictors=Temp_Predictors.drop(['Wind Gust'], axis=1)
     Temp_Predictors=Temp_Predictors.drop(['Conditions'], axis=1)
-    Temp_Predictors['Maximum Temperature_1']=""
     # Inputs for Temperature: Maximum Temperature | Minimum Temperature | Visibility | Cloud Cover | Relative Humidity
-    
     # Ez a ciklus létrehozza az új oszlopokat a DataFrame-ben a megfelelő névvel
     # Minimum Temperature_1 nevű oszlop pl. az aktuális elemhez képest, ez előző elem Minimum Hőmérsékletét tartalmazza
     # A Minimum Temperature_4 pedig az aktuális elemhez képest, 4 indexxel korábbi nap Minimum hőmérsékeltét
@@ -105,7 +106,54 @@ def generateNKPredictors(DataFrame):
     NK_Predictors = NK_Predictors.drop(['Napi Csapadékösszeg'],axis=1)                              
     NK_Predictors = NK_Predictors.drop(['Napi Csapadékösszeg Fajtája'],axis=1)
     NK_Predictors = NK_Predictors.drop(['Napfénytartam Napi Összege'],axis=1)
-    return NK_Predictors    
+    return NK_Predictors   
+
+def GetHistoricalWeatherData(inputDate):
+    startDate = inputDate
+    endDate = startDate.today() - timedelta(days=3)
+    queryURL="https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/weatherdata/history?aggregateHours=24&combinationMethod=aggregate&startDateTime="+str(endDate.year)+"-"+str(endDate.month)+"-"+str(endDate.day)+"T00%3A00%3A00&endDateTime="+str(startDate.year)+"-"+str(startDate.month)+"-"+str(startDate.day)+"T00%3A00%3A00&maxStations=-1&maxDistance=-1&contentType=json&unitGroup=metric&locationMode=single&key=T735TQNAUCYZNFTQGDSSHTTSA&dataElements=default&locations=Budapest"
+    foreCastQueryURL="https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/weatherdata/forecast?aggregateHours=24&combinationMethod=aggregate&contentType=json&unitGroup=metric&locationMode=single&key=T735TQNAUCYZNFTQGDSSHTTSA&dataElements=default&locations=Budapest"
+    df = pd.read_json(queryURL)
+    foreCastDF= pd.read_json(foreCastQueryURL)
+    df=createFiveInputPredictionData(df, foreCastDF)
+    return df 
+
+def createFiveInputPredictionData(df, foreCastDF):
+    DataFrame = pd.DataFrame(index=[0])  
+    for j in range(4):
+            col_name='Maximum Temperature_'+str(j+1)
+            DataFrame[col_name]=""
+            col_name='Minimum Temperature_'+str(j+1)
+            DataFrame[col_name]=""
+            col_name='Visibility_'+str(j+1)
+            DataFrame[col_name]=""
+            col_name='Cloud Cover_'+str(j+1)
+            DataFrame[col_name]=""
+            col_name='Relative Humidity_'+str(j+1)
+            DataFrame[col_name]=""
+    i=4        
+    for j in range(3):
+        col_name='Maximum Temperature_'+str(i)
+        DataFrame[col_name][0]=df['location']['values'][j]['maxt']
+            
+        col_name='Minimum Temperature_'+str(i)
+        DataFrame[col_name][0]=df['location']['values'][j]['mint']
+            
+        col_name='Visibility_'+str(i)
+        DataFrame[col_name][0]=df['location']['values'][j]['visibility']
+            
+        col_name='Cloud Cover_'+str(i)
+        DataFrame[col_name][0]=df['location']['values'][j]['cloudcover']
+            
+        col_name='Relative Humidity_'+str(i)
+        DataFrame[col_name][0]=df['location']['values'][j]['humidity']
+        i=i-1; 
+    DataFrame['Maximum Temperature_1'][0]=foreCastDF['location']['values'][0]['maxt']
+    DataFrame['Minimum Temperature_1'][0]=foreCastDF['location']['values'][0]['mint']
+    DataFrame['Visibility_1'][0]=foreCastDF['location']['values'][0]['visibility']
+    DataFrame['Cloud Cover_1'][0]=foreCastDF['location']['values'][0]['cloudcover']
+    DataFrame['Relative Humidity_1'][0]=foreCastDF['location']['values'][0]['humidity']     
+    return DataFrame
     
 def weatherForecastWithLinearRegression(X,y):
     linearreg=LinearRegression()
@@ -152,9 +200,10 @@ def main():
         DailyDatas=readHistoryDataExtra()
         FiveInputNK_Predictors = generateFiveInputNKPredictors(DailyDatas)
         treeModel=weatherForecastWithDecisionTree(FiveInputNK_Predictors[['Maximum Temperature_1','Minimum Temperature_1','Visibility_1','Cloud Cover_1','Relative Humidity_1','Maximum Temperature_2','Minimum Temperature_2','Visibility_2','Cloud Cover_2','Relative Humidity_2','Maximum Temperature_3','Minimum Temperature_3','Visibility_3','Cloud Cover_3','Relative Humidity_3','Maximum Temperature_4','Minimum Temperature_4','Visibility_4','Cloud Cover_4','Relative Humidity_4']],FiveInputNK_Predictors[['Temperature']] )
-        testData=FiveInputNK_Predictors
-        testData=testData.drop(['Temperature'], axis=1)
-        print("2021.11.21-én a napi középhőmérséklet ennyi lesz: "+str(treeModel.predict(testData.loc[[285]])[0])+"°C")
+        #testData=FiveInputNK_Predictors
+        #testData=testData.drop(['Temperature'], axis=1)        
+        testData= GetHistoricalWeatherData(date.today())
+        print("Holnap a napi középhőmérséklet ennyi lesz: "+str(treeModel.predict(testData)[0])+"°C")
     
     
 main()
