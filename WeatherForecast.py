@@ -109,7 +109,7 @@ def generateNKPredictors(DataFrame):
     return NK_Predictors   
 
 def GetHistoricalWeatherData(inputDate):
-    startDate = inputDate.today() - timedelta(days=3)
+    startDate = inputDate.today()
     endDate = startDate - timedelta(days=3)
     queryURL="https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/weatherdata/history?aggregateHours=24&combinationMethod=aggregate&startDateTime="+str(endDate.year)+"-"+str(endDate.month)+"-"+str(endDate.day)+"T00%3A00%3A00&endDateTime="+str(startDate.year)+"-"+str(startDate.month)+"-"+str(startDate.day)+"T00%3A00%3A00&maxStations=-1&maxDistance=-1&contentType=json&unitGroup=metric&locationMode=single&key=T735TQNAUCYZNFTQGDSSHTTSA&dataElements=default&locations=Budapest"
     foreCastQueryURL="https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/weatherdata/forecast?aggregateHours=24&combinationMethod=aggregate&contentType=json&unitGroup=metric&locationMode=single&key=T735TQNAUCYZNFTQGDSSHTTSA&dataElements=default&locations=Budapest"
@@ -203,7 +203,7 @@ def main():
         #testData=FiveInputNK_Predictors
         #testData=testData.drop(['Temperature'], axis=1)        
         testData= GetHistoricalWeatherData(date.today())
-        print("2021.11.23. napi középhőmérséklet ennyi lesz: "+str(treeModel.predict(testData)[0])+"°C")
+        print("A holnapi középhőmérséklet ennyi lesz: "+str(treeModel.predict(testData)[0])+"°C")
     
     
 main()
