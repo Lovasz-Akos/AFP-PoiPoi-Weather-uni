@@ -11,7 +11,6 @@ pd.options.mode.chained_assignment = None  # default='warn'
 def readSource():
     DailyDatas_columns=['Dátum','Napi Középhőmérséklet','Napi Maximumhőmérséklet','Napi Minimumhőmérséklet','Napi Csapadékösszeg','Napi Csapadékösszeg Fajtája','Napfénytartam Napi Összege','Globálsugárzás Napi Összege']
     DailyDatas = pd.read_csv('Adatforrás/Budapest/napi_adatok/BP_d.txt', sep=';', skiprows=1, names=DailyDatas_columns)
-    print("A fájl beolvasás sikeres")
     DailyDatas['Dátum']=pd.to_datetime(DailyDatas['Dátum'])
     DailyDatas=DailyDatas.drop(['Globálsugárzás Napi Összege'], axis=1)
     return DailyDatas
@@ -178,17 +177,48 @@ def weatherForecastByDate(model):
     PredDate=pd.DataFrame(PredDate,columns=['DátumKód'])
     return model.predict(PredDate)[0]
     
+def sourcePreProcessForLSTM(DataFrame):
+    DataFrame.index = pd.to_datetime(DataFrame['Dátum'], format='%Y-%m-%d')
+    DataFrame = DataFrame.drop('Dátum', axis=1)
+    DataFrame = DataFrame.drop(['Napi Csapadékösszeg'],axis=1)                              
+    DataFrame = DataFrame.drop(['Napi Csapadékösszeg Fajtája'],axis=1)
+    DataFrame = DataFrame.drop(['Napfénytartam Napi Összege'],axis=1)
+    DataFrame['Másodpercek'] = DataFrame.index.map(pd.Timestamp.timestamp)
+    SecondsPerDay=60*60*24
+    SecondsPerYear=365.25*SecondsPerDay
+    DataFrame['Nap Szinusza']=np.sin(DataFrame['Másodpercek'] * (2* np.pi / SecondsPerDay))
+    DataFrame['Nap Koszinusza']=np.cos(DataFrame['Másodpercek'] * (2* np.pi / SecondsPerDay))
+    DataFrame['Év Szinusza']=np.sin(DataFrame['Másodpercek'] * (2* np.pi / SecondsPerYear))
+    DataFrame['Év Koszinusza']=np.cos(DataFrame['Másodpercek'] * (2* np.pi / SecondsPerYear))
+    DataFrame = DataFrame.drop('Másodpercek', axis=1)
+    print(DataFrame)
+    X,y = generateMatrixForLSTM(DataFrame)
+    return X,y
 
-        
+def generateMatrixForLSTM(DataFrame, WindowSize=5):
+    DataFrameAsNumpy= DataFrame.to_numpy()
+    X=[]
+    y=[]
+    for i in range(len(DataFrameAsNumpy)-WindowSize):
+        # 5 nap közép, max, min hőmérséklete és a dátum szinuszok és koszinuszok bekerűlnek az X-be
+        row = [r for r in DataFrameAsNumpy[i:i+WindowSize]]
+        X.append(row)
+        # Az 6. nap középhőmérséklete belekerül az y-ba
+        tempData = DataFrameAsNumpy[i+WindowSize][0]
+        y.append(tempData)
+    return np.array(X),np.array(y)  
+
+
 def main():
     Input = 0
-    while Input != '1' and Input != '2':
+    while Input != '1' and Input != '2' and Input != '3':
         print("\n")
         print("Válassz a két opció közül:")
         print("1. Dátum alapú előrejelzés")
-        print("2. Egy napos előrejelzés mostani éghajlati adatok alapján")
+        print("2. Egy napos előrejelzés mostani éghajlati adatok alapján, döntési fával")
+        print("3. Egy napos előrejelzés mostani éghajlati adatok alapján, LSTM modellel")
         print("\n")
-        Input = input("Válaszd ki a megfelelő opció sorszámát (1-2): ")
+        Input = input("Válaszd ki a megfelelő opció sorszámát (1-3): ")
     if(Input == '1'):
         DailyDatas = readSource()
         DateCodes=pd.DataFrame(generateDateCodes(DailyDatas),columns=['DátumKód'])
@@ -204,6 +234,12 @@ def main():
         #testData=testData.drop(['Temperature'], axis=1)        
         testData= GetHistoricalWeatherData(date.today())
         print("A holnapi középhőmérséklet ennyi lesz: "+str(treeModel.predict(testData)[0])+"°C")
+    elif(Input == '3'):
+        DailyDatas=readSource()
+        X,y=sourcePreProcessForLSTM(DailyDatas)
+        
+        
+       
     
     
 main()
