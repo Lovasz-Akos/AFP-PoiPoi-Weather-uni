@@ -183,6 +183,13 @@ def sourcePreProcessForLSTM(DataFrame):
     DataFrame = DataFrame.drop(['Napi Csapadékösszeg'],axis=1)                              
     DataFrame = DataFrame.drop(['Napi Csapadékösszeg Fajtája'],axis=1)
     DataFrame = DataFrame.drop(['Napfénytartam Napi Összege'],axis=1)
+    DataFrame['Másodpercek'] = DataFrame.index.map(pd.Timestamp.timestamp)
+    SecondsPerDay=60*60*24
+    SecondsPerYear=365.25*SecondsPerDay
+    DataFrame['Nap Szinusza']=np.sin(DataFrame['Másodpercek'] * (2* np.pi / SecondsPerDay))
+    DataFrame['Nap Koszinusza']=np.cos(DataFrame['Másodpercek'] * (2* np.pi / SecondsPerDay))
+    DataFrame['Év Szinusza']=np.sin(DataFrame['Másodpercek'] * (2* np.pi / SecondsPerYear))
+    DataFrame['Év Koszinusza']=np.cos(DataFrame['Másodpercek'] * (2* np.pi / SecondsPerYear))
     return DataFrame
         
 def main():
@@ -214,6 +221,7 @@ def main():
         DailyDatas=readSource()
         DailyDatas=sourcePreProcessForLSTM(DailyDatas)
         print(DailyDatas)
+       
     
     
 main()
