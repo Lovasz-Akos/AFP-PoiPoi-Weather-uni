@@ -190,8 +190,25 @@ def sourcePreProcessForLSTM(DataFrame):
     DataFrame['Nap Koszinusza']=np.cos(DataFrame['Másodpercek'] * (2* np.pi / SecondsPerDay))
     DataFrame['Év Szinusza']=np.sin(DataFrame['Másodpercek'] * (2* np.pi / SecondsPerYear))
     DataFrame['Év Koszinusza']=np.cos(DataFrame['Másodpercek'] * (2* np.pi / SecondsPerYear))
-    return DataFrame
-        
+    DataFrame = DataFrame.drop('Másodpercek', axis=1)
+    print(DataFrame)
+    X,y = generateMatrixForLSTM(DataFrame)
+    return X,y
+
+def generateMatrixForLSTM(DataFrame, WindowSize=5):
+    DataFrameAsNumpy= DataFrame.to_numpy()
+    X=[]
+    y=[]
+    for i in range(len(DataFrameAsNumpy)-WindowSize):
+        # 5 nap közép, max, min hőmérséklete és a dátum szinuszok és koszinuszok bekerűlnek az X-be
+        row = [r for r in DataFrameAsNumpy[i:i+WindowSize]]
+        X.append(row)
+        # Az 6. nap középhőmérséklete belekerül az y-ba
+        tempData = DataFrameAsNumpy[i+WindowSize][0]
+        y.append(tempData)
+    return np.array(X),np.array(y)  
+
+
 def main():
     Input = 0
     while Input != '1' and Input != '2' and Input != '3':
@@ -219,8 +236,9 @@ def main():
         print("A holnapi középhőmérséklet ennyi lesz: "+str(treeModel.predict(testData)[0])+"°C")
     elif(Input == '3'):
         DailyDatas=readSource()
-        DailyDatas=sourcePreProcessForLSTM(DailyDatas)
-        print(DailyDatas)
+        X,y=sourcePreProcessForLSTM(DailyDatas)
+        
+        
        
     
     
