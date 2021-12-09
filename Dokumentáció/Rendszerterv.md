@@ -36,8 +36,6 @@ Fejlesztők:
 
 ## Követelmények
 
-- Admin: Teljes hozzáférése van a rendszerhez, és  bármilyen rendszerszereplőként beléphet a rendszerbe
-
 - Nincsenek megvásárolt komponenseink
 - Fejlesztői eszközök:
   - Notepad++
@@ -56,7 +54,10 @@ Rendszerhasználati esetek és lefutásaik:
 - Felhasználó:
   - Csak részleges hozzáférése van a rendszerhez
 
-## Fizikai környezet
+- Admin:
+    - Teljes hozzáférése van a rendszerhez, és  bármilyen rendszerszereplőként beléphet a rendszerbe
+	
+# Fizikai környezet
 
 - Az alkalmazás Android és web platformra, hordozható eszközökre (például: okostelefonok, táblagépek) készül.
 
@@ -73,7 +74,17 @@ kell Unit teszteket, a minél nagyobb kódlefedettséget szem előtt tartva. A
 metódusok akkor vannak kész, ha a tesztesetek hiba nélkül lefutnak az egyes
 metódusokon.
 
-- Beta teszt: Ezt a tesztet nem a fejlesztők, hanem a felhasználók vagy véletlenszerűen kiválasztott emberek végzik.
+- Alfa teszt:
+
+	- A teszt elsődleges célja: az eddig meglévő funkcióknak a különböző
+böngészőkkel, és androidokkal való kompatibilitásának tesztelése. A tesztet a
+fejlesztők végzik.
+Az eljárás sikeres, ha különböző böngészőkben és különböző androidokon is
+megfelelően működnek a különböző funkciók. A teszt időtartama egy hét.
+
+- Beta teszt:
+
+	- Ezt a tesztet nem a fejlesztők, hanem a felhasználók vagy véletlenszerűen kiválasztott emberek végzik.
 Tesztelendő böngészők: Opera, Firefox, Google Chrome, Safari
 Tesztelendő android rendszerek:6.0.0(minimum), vagy újabbak
 A teszt időtartama maximum egy hét.
@@ -81,13 +92,7 @@ A tesztelés alatt a tesztelő felhasználók visszajelzéseket küldhetnek a
 fejlesztőknek, probléma/hiba felmerülése esetén.
 Ha hiba lép fel, a fejlesztők kijavítják a lehető leghamarabb. Azonban ha sok hiba lépne fel a Beta tesz során, akkor a fejlesztőknek többet kell foglalkozni a kijavításukkal. Emiatt a tesztelési idő sokkal tovább is elhúzódhat.
 
-- Alfa teszt: A teszt elsődleges célja: az eddig meglévő funkcióknak a különböző
-böngészőkkel, és androidokkal való kompatibilitásának tesztelése. A tesztet a
-fejlesztők végzik.
-Az eljárás sikeres, ha különböző böngészőkben és különböző androidokon is
-megfelelően működnek a különböző funkciók. A teszt időtartama egy hét.
-
-## Telepítési terv
+# Telepítési terv
 
 - Androidos alkalmazás esetén: Töltse le az alkalmazást a Google Play áruházból, adja meg a szükséges engedélyeket és telepítse a programot!
 - Webes alkalmazás esetén: A szoftver webes felületéhez csak egy ajánlott böngésző telepítése szükséges
@@ -98,11 +103,4 @@ megfelelően működnek a különböző funkciók. A teszt időtartama egy hét.
 - Corrective Maintenance: A felhasználók által felfedezett és "user reportben" elküldött hibák javítása.
 - Adaptive Maintenance: A program naprakészen tartása és finomhangolása.
 - Perfective Maintenance: A szoftver hosszútávú használata érdekében végzett módosítások, új funkciók, a szoftver teljesítményének és működési megbízhatóságának javítása.
-
-## Architekturális terv
-
-A program működéséhez szükség van a www.met.hu-n található a 1901-től 2020-ig mért éghajlati adatsorokra, amiket gépen lokálisan, a megfelelő mappában kell tárolni, mivel a program ezen adatok feldolgozásával készíti el az előrejelzésket. A három napos pontos előrejelzés funkció használatához pedig internetkapcsolat is szükséges, mivel a program adatigényeinek ezen részét egy API szolgálja ki JSON objektumokkal.
-
-## Implementációs terv
-
-A fejlesztés során használt programozási nyelv a Python, emellett több könyvtárat és modult is alkalmazni fogunk. A Python rengeteg beépített modullal is rendelkezik a különböző felhasználási esetekhez. A táblázatos adatok tárolására a CSV fájlokat használhatjuk. Az adatok importálása és exportálásara az egyik leggyakrabban használt formátum. A Python rendelkezik egy CSV nevű modullal, a CSV fájlok könnyű kezelése érdekében. Egy másik ilyen modul a NumPy, egy Lineáris Algebra Könyvtár, amit data science során, (magyarul adattudomány) használnak. Főként a gépi tanulási projektekben használatos, sok matematikai számítást tartalmaz, és rengeteg más modul előfeltétele. A Pandas egy open source könyvtár ami a NumPy-ra épül. Könnyű adatkezelést, data cleaning-et, analízist tesz lehetővé, sajátos könnyen értelmezhető és kezelhető adatstruktúrát alkothatunk vele. A gépi tanuláshoz pedig az open source scikit-learn modult használjuk, ami szintén a NumPy-ra épül, ebben a modulban több gépi tanulási modell is megtalálható.
+- Preventive Maintenance: Olyan problémák elhárítása, amelyek még nem tűnnek fontosnak, de később komoly problémákat okozhatnak.
