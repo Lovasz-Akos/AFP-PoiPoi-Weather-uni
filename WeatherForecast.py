@@ -168,46 +168,10 @@ def weatherForecastByDate(model):
     print("\n")
     print("Add meg az előrejelzés dátumát:")
     print("\n")
-    LeapYears=[1904,1908,1912,1916,1920,1924,1928,1932,1936,1940,1944,1948,1952,1956,1960,1964,1968,1972,1976,1980,1984,1988,1992,1996,2000,2004,2008,2012,2016,2020,2024,2028,]
-    Input = 0
-    while Input < 1901 or Input > 2030:
-        num = input("Év(1901-2030): ")
-        Input=int(num)
-        if(Input < 1901 or Input > 2030):
-          print("Hibás Évszám")
-    year=Input
-    Input = 0
-    while Input < 1 or Input > 12:
-        num = input("Hónap(1-12): ")
-        Input=int(num)
-        if(Input < 1 or Input > 12):
-          print("Hibás Hónap")
+    Input = input("Év: ")
+    Input = input("Hónap(1-12): ")
     month = Input
-    Input = 0
-    if(month == 1 or month == 3 or month == 5 or month == 7 or month ==8 or month==10 or month==12):
-        while Input < 1 or Input > 31:
-            num = input("Nap (01-31): ")
-            Input=int(num)
-            if(Input < 1 or Input > 31):
-              print("Hibás Nap")
-    elif(month == 2 and year in LeapYears):
-         while Input < 1 or Input > 29:
-                num = input("Nap (01-29): ")
-                Input=int(num)
-                if(Input < 1 or Input > 29):
-                  print("Hibás Nap")
-    elif(month == 2 and year not in LeapYears):
-         while Input < 1 or Input > 28:
-                num = input("Nap (01-28): ")
-                Input=int(num)
-                if(Input < 1 or Input > 28):
-                  print("Hibás Nap")
-    else:
-         while Input < 1 or Input > 30:
-                num = input("Nap (01-30): ")
-                Input=int(num)
-                if(Input < 1 or Input > 30):
-                  print("Hibás Nap")
+    Input = input("Nap (01-31): ")
     day = Input
     PredDate=[month+day]
     PredDate=pd.DataFrame(PredDate,columns=['DátumKód'])
