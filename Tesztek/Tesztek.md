@@ -40,3 +40,27 @@ Ez a függvény a dátum alapú előrejelzéshez (1. opció) generál olyan adat
 ![Test-04](/Tesztek/Képek/Test04.PNG)
 
 A teszt képen látható, hogy minden adatot (input és output) tartalmaz a DataFrame.
+
+## Dátum alapú előrejelzés tetszje
+
+A dátum alapú előrejezésnek meg kell adni egy konkrét dátumot, és a program arra az adott napra fog generálni egy előrejelzést:
+Ez volt a legelső előrejelzést generáló algoritmus és sajnos a legpontatlanabb is.
+A tesztek során 2021.11.15.-ét adtam meg dátumnak
+
+![DateTest01](/Tesztek/Képek/DateTest01.PNG)
+
+Ha összevetjük a valós adatokkal:
+
+![DateReal01](/Tesztek/Képek/DateReal01.PNG)
+
+Láthatjuk egész pontos eredményt kapunk.
+Megadok egy másik dátumot (2021.11.19):
+
+![DateTest02](/Tesztek/Képek/DateTest02.PNG)
+
+Valós adatok(3. a középhőmérséklet):
+
+![DateReal02](/Tesztek/Képek/DateReal02.PNG)
+
+Itt már viszont nem olyan pontos az előrejelzés sajnos, ami azért van mert a dátum alapú előrejelzés nem veszi figyelembe az elöző napok éghajlati adatait.
+Ezért kerűlt be 2 másik opció is ami remélhetőleg pontosabb eredményt ad.
